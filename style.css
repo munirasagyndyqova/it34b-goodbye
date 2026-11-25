@@ -1,0 +1,254 @@
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(
+        135deg,
+        #fff5f8,
+        #ffe4ee,
+        #fff0f5
+    );
+    font-family: 'DM Sans', sans-serif;
+    color: #773c58;
+    overflow-x: hidden;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 45px 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.top-text {
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: #c47b9b;
+    margin-bottom: 20px;
+    animation: fadeIn 1.5s ease;
+}
+
+.main-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 6vw, 48px);
+    font-weight: 500;
+    font-style: italic;
+    color: #a64f77;
+    margin-bottom: 5px;
+    animation: fadeIn 2s ease;
+}
+
+.heart-container {
+    position: relative;
+    width: min(320px, 85vw);
+    margin: 15px auto 5px;
+    aspect-ratio: 300 / 280;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heart-svg {
+    width: 100%;
+    overflow: visible;
+}
+
+.heart-outline {
+    fill: transparent;
+    stroke: #e58bad;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: drawHeart 3s ease forwards;
+}
+
+.heart-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    animation: appearHeart 1.5s ease 2.8s forwards;
+}
+
+.group-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(35px, 9vw, 47px);
+    font-weight: 600;
+    color: #c34f80;
+    letter-spacing: 3px;
+    text-shadow: 0 3px 15px #f3b5ce;
+}
+
+.heart-emoji {
+    color: #e58bad;
+    font-size: 35px;
+    line-height: 1;
+}
+
+.message {
+    max-width: 440px;
+    margin-top: 5px;
+    opacity: 0;
+    animation: appear 1.5s ease 3.5s forwards;
+}
+
+.message h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: #a64f77;
+    margin-bottom: 16px;
+}
+
+.message p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #95647b;
+    margin-bottom: 12px;
+}
+
+.message .wish {
+    color: #a64f77;
+}
+
+.signature {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 17px !important;
+    margin-top: 20px;
+}
+
+button {
+    margin-top: 25px;
+    padding: 13px 27px;
+    border: 1px solid #e5a1bc;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.65);
+    color: #a64f77;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background: #e58bad;
+    color: white;
+    transform: translateY(-3px);
+}
+
+.footer {
+    margin-top: 45px;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: #c58ca5;
+}
+
+.background-hearts {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.floating-heart {
+    position: absolute;
+    bottom: -30px;
+    color: #e8a0bd;
+    opacity: 0;
+    animation: floatUp linear forwards;
+}
+
+@keyframes drawHeart {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    15% {
+        opacity: 0.65;
+    }
+    85% {
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(-110vh) rotate(35deg);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 35px 22px;
+    }
+
+    .message h2 {
+        font-size: 21px;
+    }
+
+    .message p {
+        font-size: 13px;
+    }
+
+    .footer {
+        margin-top: 35px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+}
+@keyframes appearHeart {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -45%) translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -45%);
+    }
+}
